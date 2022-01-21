@@ -1,0 +1,53 @@
+/* CSS GRID LAYOUT */
+.grid1 {
+    display: grid;
+    /* tenho q dividir em quantos colunas eu quero q esse grid tenha */
+    grid-template-columns: 1fr 1fr 1fr; 
+    /* outra forma de escrever
+    grid-template-columns: repeat(3, 1fr); */
+    
+    /* item que contem tudo tem no max 800px, o ideal é que seja a mesma largura nos outro itens do site */
+    max-width: 800px;
+
+    padding: 10px;/* assim os itens nao ficam grudados na tela */
+    
+    /* passando dos 800 ele alinha ao centro  */
+    margin: 0 auto;
+
+    /* da uma margem de 20px para cada um dos itens  */
+    grid-gap: 20px;
+}
+
+/* quero falar com as divs dentro da grid1 */
+/* (n + 4) a partir do quarto item eu quero estilizar de uma maneira diferente */
+.grid1 > div:nth-child(n + 4) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+/* com grid posso posicionar o item onde eu quero  
+grid é contado pelos espaçamentos, tenho no total 5 linhas grid */
+.grid1 > div.anuncio { /* como eu fiz um nth-child, essa expressao tem q ser mais especifica */
+    grid-column: 1;
+    /* grid para separar o anuncio - vai ocupar da linha 2 ate a linha 5 */
+    grid-row: 2/5;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .grid1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid1 > div:nth-child(n + 4){
+        display: block;/* passando para display block todos os efeitos de display grid sao retirados */
+    }
+
+    .grid1 > div.anuncio {
+        grid-column: auto;
+        grid-row: auto;
+        order: -1; /* isso coloca o anuncio como o primeiro a ser exibido */
+    }
+}

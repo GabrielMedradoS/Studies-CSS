@@ -1,0 +1,19 @@
+/* FLEXBOX */
+.flex {
+    display: flex;
+    /* alinhando com o flex>div ele tera no max 200px e era quebrando na tela */
+    flex-wrap: wrap;
+    
+    /* item que contem tudo tem no max 800px, o ideal é que seja a mesma largura nos outro itens do site */
+    max-width: 800px;
+    
+    /* passando dos 800 ele alinha ao centro  */
+    margin: 0 auto;
+}
+
+/* Vou falar com a div que esta dentro do flex */
+.flex > div {
+    /* 1 pode se expandir ao maximo, 1 pode se encolher ao maximo, base sempre de 200px se nao tiver ira quebrar */
+    flex: 1 1 200px;
+    margin: 10px;
+}

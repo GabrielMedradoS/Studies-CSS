@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    height: 80vh;
+}
+
+#items-wrappers {
+    width: 70%;
+}
+
+/* scroll over flow apenas na classe de itens  */
+/* o scroll-snap precisa de duas propriedades, uma no pai e outra no filho
+isso para ter o efeito da imagem se ajustar */
+#items {
+    display: flex;
+/* auto - apresenta o scroll caso aja necessidade */
+    overflow-x: auto;
+    
+    scroll-snap-type: x mandatory;
+/* com esse comando abilito essa funçao em alguns navegadores e
+dispositivos */
+    -webkit-overflow-scrolling: touch; 
+
+    scroll-behavior: smooth;
+}
+
+/* Configurando a barra de rolagem usando CSS
+alguns navegadores e dispositivos pode nao funcionar ou ficar
+mal ajustado */
+#items::-webkit-scrollbar {
+    height: 7px;
+}
+
+/* barra de rolagem  */
+#items::-webkit-scrollbar-track {
+    background-color: #1d1d1d;
+}
+
+/* tracker da barra de rolagem */
+#items::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #5b5b5b
+}
+
+#items::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc;
+}
+
+.item {
+    /* para aparecer apenas uma img */
+    flex: none;
+    /* posso ajustar quantas imagens eu quero */
+    width:100%;
+    height:600px;
+    object-fit: cover;
+
+    scroll-snap-align: start;
+
+/* com isso o evento nao vai rodar no item e a funçao ira para o pai dele,
+no caso o #items */
+    pointer-events: none;
+}
+
+#items-wrappers img {
+    width: 100%;
+    height: 100%;
+}
